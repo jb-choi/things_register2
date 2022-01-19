@@ -92,41 +92,59 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            '로그인',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Palette.activeColor
-                            )
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top:3),
-                            height:  2,
-                            width: 55,
-                            color: Colors.orange,
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                              '회원가입',
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            isSignupScreen = false;
+                          });
+                        },
+                        child: Column(
+                          children: [
+                            Text(
+                              '로그인',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Palette.activeColor
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: !isSignupScreen ? Palette.activeColor
+                                    :Palette.textColor1,
                               )
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top:3),
-                            height:  2,
-                            width: 55,
-                            color: Colors.orange,
-                          )
-                        ],
+                            ),
+                            if(!isSignupScreen)
+                            Container(
+                              margin: EdgeInsets.only(top:3),
+                              height:  2,
+                              width: 55,
+                              color: Colors.orange,
+                            )
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap:(){
+                          setState((){
+                            isSignupScreen = true;
+                          });
+                        },
+                        child: Column(
+                          children: [
+                            Text(
+                                '회원가입',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: !isSignupScreen ? Palette.textColor1
+                                        :Palette.activeColor,
+                                ),
+                            ),
+                            if(isSignupScreen)
+                            Container(
+                              margin: EdgeInsets.only(top:3),
+                              height:  2,
+                              width: 55,
+                              color: Colors.orange,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
