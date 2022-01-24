@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626114227037",
+    "project_id": "things-register2",
+    "storage_bucket": "things-register2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626114227037:android:030b6dc65732713321d6b4",
+        "android_client_info": {
+          "package_name": "com.example.things_register2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626114227037-3u58r7htsk1voge3udhjg77pa0essk15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7acwxxbUg_uf3-85Ye1qPHpFKRRZ5BiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626114227037-3u58r7htsk1voge3udhjg77pa0essk15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
