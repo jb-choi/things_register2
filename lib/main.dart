@@ -1,12 +1,15 @@
-
+//ignore_for_file:prefer_const_constructors
 // import 'dart:async';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:things_register2/screens/login_screen.dart';
 import 'package:things_register2/widgets/camera.dart';
 
-void main(){
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(MyApp());
 }
 

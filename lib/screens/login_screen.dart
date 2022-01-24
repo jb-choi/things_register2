@@ -191,6 +191,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 onSaved: (value){
                                   userName = value!;
                                 },
+                                onChanged: (value){
+                                  userName = value;
+                                },
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.account_circle,
                                     color: Palette.iconColor
@@ -231,6 +234,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 onSaved: (value){
                                   userEmail = value!;
                                 },
+                                onChanged: (value){
+                                  userEmail = value;
+                                },
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.email,
                                       color: Palette.iconColor
@@ -261,6 +267,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 height: 8,
                               ),
                               TextFormField(
+                                obscureText: true,
                                 key: ValueKey(3),
                                 validator: (value){
                                   if(value!.isEmpty || value.length < 6){
@@ -270,6 +277,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 },
                                 onSaved: (value){
                                   userPassword = value!;
+                                },
+                                onChanged: (value){
+                                  userPassword = value;
                                 },
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.password,
@@ -319,6 +329,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 onSaved: (value){
                                   userEmail = value!;
                                 },
+                                onChanged: (value){
+                                  userEmail = value;
+                                },
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.email,
                                       color: Palette.iconColor
@@ -349,14 +362,18 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 height: 8
                               ),
                               TextFormField(
+                                obscureText: true,
                                 validator: (value){
-                                  if(value!.isEmpty || value.length < 6){
+                                  if(value!.isEmpty || va lue.length < 6){
                                     return 'Password must be at least 7 characters long.';
                                   }
                                   return null;
                                 },
                                 onSaved: (value){
                                   userPassword = value!;
+                                },
+                                onChanged: (value){
+                                  userPassword = value;
                                 },
                                 key: ValueKey(5),
                                 decoration: InputDecoration(
@@ -405,6 +422,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                 child: GestureDetector(
                   onTap: (){
                     _tryValidation();
+                    print(userName);
+                    print(userEmail);
+                    print(userPassword);
                   },
                   child: Container(
                     padding: EdgeInsets.all(15.0),
