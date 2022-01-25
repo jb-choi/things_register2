@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:626114227037:android:030b6dc65732713321d6b4",
+        "mobilesdk_app_id": "1:626114227037:android:e6339dd6df78a95921d6b4",
         "android_client_info": {
-          "package_name": "com.example.things_register2"
+          "package_name": "com.slowbird.things_register2"
         }
       },
       "oauth_client": [

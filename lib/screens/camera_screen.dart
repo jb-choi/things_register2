@@ -1,6 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:things_register2/widgets/camera.dart';
+
+
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`

@@ -1,7 +1,9 @@
 //ignore_for_file:prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:things_register2/screens/chat_screen.dart';
 import 'package:things_register2/util/pallette.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginSignupScreen extends StatefulWidget {
   const LoginSignupScreen({Key? key}) : super(key: key);
@@ -11,6 +13,8 @@ class LoginSignupScreen extends StatefulWidget {
 }
 
 class _LoginSignupScreenState extends State<LoginSignupScreen> {
+  final _authentication = FirebaseAuth.instance;
+
   bool isSignupScreen = true;
   final _formKey = GlobalKey<FormState>();
   String userName = '';
@@ -224,6 +228,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 height: 8,
                               ),
                               TextFormField(
+                                keyboardType: TextInputType.emailAddress,
                                 key: ValueKey(2),
                                 validator: (value){
                                   if(value!.isEmpty || !value.contains('@')){
@@ -319,6 +324,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                           child: Column(
                             children: [
                               TextFormField(
+                                keyboardType: TextInputType.emailAddress,
                                 key: ValueKey(4),
                                 validator: (value){
                                   if(value!.isEmpty || !value.contains('@')){
@@ -364,7 +370,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                               TextFormField(
                                 obscureText: true,
                                 validator: (value){
-                                  if(value!.isEmpty || va lue.length < 6){
+                                  if(value!.isEmpty || value.length < 6){
                                     return 'Password must be at least 7 characters long.';
                                   }
                                   return null;
@@ -420,11 +426,55 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
               left:0,
               child: Center(
                 child: GestureDetector(
-                  onTap: (){
-                    _tryValidation();
-                    print(userName);
-                    print(userEmail);
-                    print(userPassword);
+                  onTap: () async{
+                    if(isSignupScreen){
+                      _tryValidation();
+                      try {
+
+                        final newUser = await _authentication.createUserWithEmailAndPassword(
+                            email: userEmail,
+                            password: userPassword,
+                        );
+
+                        if(newUser.user != null){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context){
+                              return ChatScreen();
+                            }),
+                          );
+                        }
+                      }catch(e){
+                        print(e);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                              Text('Please check your email and password'),
+                              backgroundColor: Colors.blue,
+                            ),
+                        );
+                      }
+                    }
+                    if(!isSignupScreen){
+                      _tryValidation();
+                      try {
+                        final newUser =
+                        await _authentication.signInWithEmailAndPassword(
+                            email: userEmail,
+                            password: userPassword
+                        );
+                        if (newUser.user != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return ChatScreen();
+                            }),
+                          );
+                        }
+                      }catch(e){
+                        print(e);
+                      }
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.all(15.0),

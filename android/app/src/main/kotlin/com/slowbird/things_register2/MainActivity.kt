@@ -1,4 +1,4 @@
-package com.example.things_register2
+package com.slowbird.things_register2
 
 import io.flutter.embedding.android.FlutterActivity
 

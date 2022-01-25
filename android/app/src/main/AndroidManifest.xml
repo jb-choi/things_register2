@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.things_register2">
+    package="com.slowbird.things_register2">
    <application
         android:label="things_register2"
         android:name="${applicationName}"
